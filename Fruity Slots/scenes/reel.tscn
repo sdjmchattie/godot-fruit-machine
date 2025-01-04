@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3 uid="uid://bij56wdjuhu7w"]
+
+[ext_resource type="Script" path="res://scenes/reel.gd" id="1_41fk6"]
+[ext_resource type="Texture2D" uid="uid://cvftw1d7h78tp" path="res://assets/sprites/reels.png" id="1_g45gf"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_vvvmr"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3qu5g"]
+texture = SubResource("CanvasTexture_vvvmr")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hfelu"]
+
+[node name="Reel" type="Control"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 120.0
+script = ExtResource("1_41fk6")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_3qu5g")
+
+[node name="Fruits" type="Node2D" parent="."]
+material = SubResource("CanvasItemMaterial_hfelu")
+position = Vector2(0, -40)
+
+[node name="Fruit1" type="Sprite2D" parent="Fruits"]
+position = Vector2(20, 20)
+scale = Vector2(2, 2)
+texture = ExtResource("1_g45gf")
+hframes = 3
+vframes = 3
+
+[node name="Fruit2" type="Sprite2D" parent="Fruits"]
+position = Vector2(20, 60)
+scale = Vector2(2, 2)
+texture = ExtResource("1_g45gf")
+hframes = 3
+vframes = 3
+
+[node name="Fruit3" type="Sprite2D" parent="Fruits"]
+position = Vector2(20, 100)
+scale = Vector2(2, 2)
+texture = ExtResource("1_g45gf")
+hframes = 3
+vframes = 3
+
+[node name="Fruit4" type="Sprite2D" parent="Fruits"]
+position = Vector2(20, 140)
+scale = Vector2(2, 2)
+texture = ExtResource("1_g45gf")
+hframes = 3
+vframes = 3
