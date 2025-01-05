@@ -1,29 +1,48 @@
-[gd_scene load_steps=2 format=3 uid="uid://bfltpl8nf1i1p"]
+[gd_scene load_steps=6 format=3 uid="uid://bfltpl8nf1i1p"]
 
 [ext_resource type="PackedScene" uid="uid://bij56wdjuhu7w" path="res://scenes/reel.tscn" id="1_uvsqg"]
+[ext_resource type="Script" path="res://main.gd" id="1_w0jd3"]
+[ext_resource type="AudioStream" uid="uid://cn248jup03ac4" path="res://assets/audio/reel_stop_01.ogg" id="3_preab"]
+[ext_resource type="AudioStream" uid="uid://d0ct7lgn3e3d6" path="res://assets/audio/reel_stop_02.ogg" id="4_wo4lf"]
+[ext_resource type="AudioStream" uid="uid://dbbi2ypqia7bi" path="res://assets/audio/reel_stop_03.ogg" id="5_sb2ch"]
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_w0jd3")
 
-[node name="Reel1" parent="." instance=ExtResource("1_uvsqg")]
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 50.0
-offset_bottom = 130.0
+[node name="Reels" type="Node2D" parent="."]
+position = Vector2(64, 280)
+
+[node name="Reel1" parent="Reels" instance=ExtResource("1_uvsqg")]
 scale = Vector2(2, 2)
 sprite_frames = Array[int]([2, 7, 1, 2, 1, 2, 6, 2, 1, 0, 4, 0, 1, 2, 0, 5, 2, 1, 5, 1])
+stop_audio_stream = ExtResource("3_preab")
 
-[node name="Reel2" parent="." instance=ExtResource("1_uvsqg")]
-offset_left = 110.0
-offset_top = 10.0
-offset_right = 150.0
-offset_bottom = 130.0
+[node name="Reel2" parent="Reels" instance=ExtResource("1_uvsqg")]
+offset_left = 140.0
+offset_right = 190.0
 scale = Vector2(2, 2)
 sprite_frames = Array[int]([2, 0, 1, 7, 5, 2, 6, 0, 5, 2, 1, 2, 0, 4, 2, 1, 0, 1, 2, 1])
+stop_audio_stream = ExtResource("4_wo4lf")
 
-[node name="Reel3" parent="." instance=ExtResource("1_uvsqg")]
-offset_left = 210.0
-offset_top = 10.0
-offset_right = 250.0
-offset_bottom = 130.0
+[node name="Reel3" parent="Reels" instance=ExtResource("1_uvsqg")]
+offset_left = 280.0
+offset_right = 330.0
 scale = Vector2(2, 2)
 sprite_frames = Array[int]([2, 1, 5, 2, 5, 1, 6, 2, 1, 0, 7, 5, 2, 5, 1, 5, 4, 2, 0, 5])
+stop_audio_stream = ExtResource("5_sb2ch")
+
+[node name="Buttons" type="Node2D" parent="."]
+
+[node name="Button" type="Button" parent="Buttons"]
+offset_left = 386.0
+offset_top = 563.0
+offset_right = 486.0
+offset_bottom = 613.0
+text = "START
+"
+
+[node name="ReelTimer" type="Timer" parent="."]
+
+[connection signal="reel_stopped" from="Reels/Reel3" to="." method="_on_reel_stopped"]
+[connection signal="pressed" from="Buttons/Button" to="." method="_on_start_pressed"]
+[connection signal="timeout" from="ReelTimer" to="." method="_on_reel_timer_timeout"]
