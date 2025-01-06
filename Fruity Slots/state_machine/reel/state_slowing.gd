@@ -12,8 +12,7 @@ func enter() -> void:
 
 
 func exit(_next_state: MachineState) -> void:
-	FSM.reel.stop_audio_player.play()
-	FSM.reel.reel_stopped.emit()
+	FSM.reel._on_stop()
 
 
 func update(_delta: float):

@@ -44,6 +44,11 @@ func _update_fruit():
 	fruit_4.frame = sprite_frames[(top_index + 3) % sprite_frames.size()]
 
 
+func _on_stop():
+	stop_audio_player.play()
+	reel_stopped.emit()
+
+
 func spin():
 	max_speed = randf_range(400, 600)
 	state_machine.change_state_to("Spinning")
@@ -54,4 +59,4 @@ func stop():
 
 
 func winning_fruit():
-	sprite_frames[(top_index + 2) % sprite_frames.size()]
+	return sprite_frames[(top_index + 2) % sprite_frames.size()]

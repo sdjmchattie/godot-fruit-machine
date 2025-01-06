@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bij56wdjuhu7w"]
+[gd_scene load_steps=16 format=3 uid="uid://bij56wdjuhu7w"]
 
 [ext_resource type="Script" path="res://scenes/reel.gd" id="1_41fk6"]
 [ext_resource type="Texture2D" uid="uid://cvftw1d7h78tp" path="res://assets/sprites/reels.png" id="1_g45gf"]
@@ -12,8 +12,31 @@
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3qu5g"]
 texture = SubResource("CanvasTexture_vvvmr")
+modulate_color = Color(0.862522, 0.862522, 0.862522, 1)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hfelu"]
+
+[sub_resource type="Gradient" id="Gradient_356dd"]
+offsets = PackedFloat32Array(0, 0.2, 0.8, 1)
+colors = PackedColorArray(0, 0, 0, 0.784314, 0.501961, 0.501961, 0.501961, 0, 0.501961, 0.501961, 0.501961, 0, 0, 0, 0, 0.784314)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ub7cp"]
+gradient = SubResource("Gradient_356dd")
+fill_from = Vector2(0.5, 0)
+fill_to = Vector2(0.5, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tbpwp"]
+texture = SubResource("GradientTexture2D_ub7cp")
+
+[sub_resource type="Gradient" id="Gradient_ip0pg"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_520m3"]
+gradient = SubResource("Gradient_ip0pg")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
 
 [node name="Reel" type="Control"]
 clip_contents = true
@@ -23,7 +46,7 @@ offset_right = 50.0
 offset_bottom = 120.0
 script = ExtResource("1_41fk6")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="Background" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -82,3 +105,33 @@ script = ExtResource("5_nyg2g")
 
 [node name="StopRequested" type="Node" parent="FiniteStateMachine"]
 script = ExtResource("7_k2wme")
+
+[node name="Wheel Effect" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_tbpwp")
+
+[node name="Top Light" type="PointLight2D" parent="."]
+position = Vector2(25, 20)
+scale = Vector2(0.75, 0.75)
+color = Color(0.755312, 0.647651, 0.312766, 1)
+energy = 0.66
+texture = SubResource("GradientTexture2D_520m3")
+
+[node name="Middle Light" type="PointLight2D" parent="."]
+position = Vector2(25, 60)
+scale = Vector2(0.75, 0.75)
+color = Color(0.755312, 0.647651, 0.312766, 1)
+energy = 0.66
+texture = SubResource("GradientTexture2D_520m3")
+
+[node name="Bottom Light" type="PointLight2D" parent="."]
+position = Vector2(25, 100)
+scale = Vector2(0.75, 0.75)
+color = Color(0.755312, 0.647651, 0.312766, 1)
+energy = 0.66
+texture = SubResource("GradientTexture2D_520m3")
