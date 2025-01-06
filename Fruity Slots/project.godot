@@ -8,6 +8,10 @@
 
 config_version=5
 
+[Fruity Slots]
+
+config/ninetailsrabbit.fsm/update_notification_enabled=true
+
 [application]
 
 config/name="Fruity Slots"
@@ -22,6 +26,10 @@ window/size/viewport_height=640
 window/size/resizable=false
 window/stretch/scale_mode="integer"
 window/dpi/allow_hidpi=false
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/ninetailsrabbit.fsm/plugin.cfg")
 
 [rendering]
 

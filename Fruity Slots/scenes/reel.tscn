@@ -1,7 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://bij56wdjuhu7w"]
+[gd_scene load_steps=11 format=3 uid="uid://bij56wdjuhu7w"]
 
 [ext_resource type="Script" path="res://scenes/reel.gd" id="1_41fk6"]
 [ext_resource type="Texture2D" uid="uid://cvftw1d7h78tp" path="res://assets/sprites/reels.png" id="1_g45gf"]
+[ext_resource type="Script" path="res://state_machine/reel/finite_state_machine.gd" id="3_s3jk6"]
+[ext_resource type="Script" path="res://state_machine/reel/state_slowing.gd" id="4_w5v3g"]
+[ext_resource type="Script" path="res://addons/ninetailsrabbit.fsm/src/machine_state.gd" id="5_nyg2g"]
+[ext_resource type="Script" path="res://state_machine/reel/state_spinning.gd" id="5_yeyvu"]
+[ext_resource type="Script" path="res://state_machine/reel/state_stop_requested.gd" id="7_k2wme"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_vvvmr"]
 
@@ -60,3 +65,20 @@ hframes = 3
 vframes = 3
 
 [node name="StopSound" type="AudioStreamPlayer" parent="."]
+
+[node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("reel", "current_state")]
+script = ExtResource("3_s3jk6")
+reel = NodePath("..")
+current_state = NodePath("Stopped")
+
+[node name="Slowing" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("4_w5v3g")
+
+[node name="Spinning" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("5_yeyvu")
+
+[node name="Stopped" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("5_nyg2g")
+
+[node name="StopRequested" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("7_k2wme")
