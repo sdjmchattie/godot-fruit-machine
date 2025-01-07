@@ -1,3 +1,3 @@
 extends FiniteStateMachine
 
-@export var reel: Control;
+@export var reel: Node2D;

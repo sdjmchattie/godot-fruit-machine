@@ -1,4 +1,4 @@
-extends Control
+extends Node2D
 
 # Exported properties
 @export var sprite_frames: Array[int] = [0]
@@ -7,11 +7,11 @@ extends Control
 signal reel_stopped()
 
 # Nodes
-@onready var fruits_panel: Node2D = $Fruits
-@onready var fruit_1: Sprite2D = $Fruits/Fruit1
-@onready var fruit_2: Sprite2D = $Fruits/Fruit2
-@onready var fruit_3: Sprite2D = $Fruits/Fruit3
-@onready var fruit_4: Sprite2D = $Fruits/Fruit4
+@onready var fruits_panel: Node2D = $ViewportContainer/Viewport/Fruits
+@onready var fruit_1: Sprite2D = $ViewportContainer/Viewport/Fruits/Fruit1
+@onready var fruit_2: Sprite2D = $ViewportContainer/Viewport/Fruits/Fruit2
+@onready var fruit_3: Sprite2D = $ViewportContainer/Viewport/Fruits/Fruit3
+@onready var fruit_4: Sprite2D = $ViewportContainer/Viewport/Fruits/Fruit4
 @onready var state_machine: FiniteStateMachine = $FiniteStateMachine
 @onready var stop_audio_player: AudioStreamPlayer = $StopSound
 

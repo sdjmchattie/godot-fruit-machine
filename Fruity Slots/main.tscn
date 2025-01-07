@@ -18,15 +18,13 @@ sprite_frames = Array[int]([2, 7, 1, 2, 1, 2, 6, 2, 1, 0, 4, 0, 1, 2, 0, 5, 2, 1
 stop_audio_stream = ExtResource("3_preab")
 
 [node name="Reel2" parent="Reels" instance=ExtResource("1_uvsqg")]
-offset_left = 140.0
-offset_right = 190.0
+position = Vector2(140, 0)
 scale = Vector2(2, 2)
 sprite_frames = Array[int]([2, 0, 1, 7, 5, 2, 6, 0, 5, 2, 1, 2, 0, 4, 2, 1, 0, 1, 2, 1])
 stop_audio_stream = ExtResource("4_wo4lf")
 
 [node name="Reel3" parent="Reels" instance=ExtResource("1_uvsqg")]
-offset_left = 280.0
-offset_right = 330.0
+position = Vector2(280, 0)
 scale = Vector2(2, 2)
 sprite_frames = Array[int]([2, 1, 5, 2, 5, 1, 6, 2, 1, 0, 7, 5, 2, 5, 1, 5, 4, 2, 0, 5])
 stop_audio_stream = ExtResource("5_sb2ch")
